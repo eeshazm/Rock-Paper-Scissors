@@ -25,7 +25,7 @@ playRound(playerSelection, computerSelection) {
     } else {
         return "It's a tie!"
     }   
-        
+}        
     rounds logic just use a for loop for 5 rounds
     for i = 0 to 4 {
         playerSelection = getPlayerChoice()
@@ -55,6 +55,7 @@ function getComputerChoice() {
     
 }
 let computerSelection = getComputerChoice();
+console.log(computerSelection);
 
 function getPlayerChoice() {
     let playerSelection = prompt("Rock Paper Scissors?");
@@ -77,3 +78,32 @@ function getPlayerChoice() {
 
 let playerSelection = getPlayerChoice();
 console.log(playerSelection);
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(computerSelection, playerSelection) {
+    if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        humanScore += 1;
+        return "You win! Rock beats Scissors"; 
+    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        humanScore += 1;
+        return "You win! Paper beats Rock";
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        humanScore += 1;
+        return "You win! Scissors beats Paper";
+    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        computerScore += 1;
+        return "You lose! Rock beats Scissors";
+    } else if (playerSelection === "Rock" && computerSelection === "Paper"){
+        computerScore += 1;
+        return "You lose! Paper beats Rock";
+    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        computerScore += 1;
+        return "You lose! Scissors beats Paper";
+    } else {
+        return "It's a tie!";
+    } 
+}
+
+console.log(playRound(computerSelection, playerSelection));
