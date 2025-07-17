@@ -54,8 +54,6 @@ function getComputerChoice() {
     }
     
 }
-let computerSelection = getComputerChoice();
-console.log(computerSelection);
 
 function getPlayerChoice() {
     let playerSelection = prompt("Rock Paper Scissors?");
@@ -76,34 +74,51 @@ function getPlayerChoice() {
     return playerSelection;
 }
 
-let playerSelection = getPlayerChoice();
-console.log(playerSelection);
-
 let humanScore = 0;
 let computerScore = 0;
 
 function playRound(computerSelection, playerSelection) {
+    let result;
+    console.log(`Your selection: ${playerSelection}, Computer selection: ${computerSelection}`);
     if (playerSelection === "Rock" && computerSelection === "Scissors") {
         humanScore += 1;
-        return "You win! Rock beats Scissors"; 
+        result = "You win! Rock beats Scissors"; 
     } else if (playerSelection === "Paper" && computerSelection === "Rock") {
         humanScore += 1;
-        return "You win! Paper beats Rock";
+        result = "You win! Paper beats Rock";
     } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
         humanScore += 1;
-        return "You win! Scissors beats Paper";
+        result = "You win! Scissors beats Paper";
     } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
         computerScore += 1;
-        return "You lose! Rock beats Scissors";
+        result = "You lose! Rock beats Scissors";
     } else if (playerSelection === "Rock" && computerSelection === "Paper"){
         computerScore += 1;
-        return "You lose! Paper beats Rock";
+        result = "You lose! Paper beats Rock";
     } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
         computerScore += 1;
-        return "You lose! Scissors beats Paper";
+        result = "You lose! Scissors beats Paper";
     } else {
-        return "It's a tie!";
+        result = "It's a tie!";
     } 
+    console.log(result);
+    console.log(`Your score: ${humanScore}, Computer score: ${computerScore}`);
+    return result;
 }
 
-console.log(playRound(computerSelection, playerSelection));
+for (let i = 0; i < 5; i++) {
+    computerSelection = getComputerChoice();
+    playerSelection = getPlayerChoice();
+    playRound(computerSelection, playerSelection);
+}
+
+if (humanScore > computerScore) {
+    console.log("You win the game!");
+} else if (humanScore < computerScore) {
+    console.log("You lose the game!");
+} else {
+    console.log("The game is a tie!");
+}   
+
+// This code implements a simple Rock-Paper-Scissors game where the player plays against the computer assuming the player inputs valid choices. The game runs for 5 rounds, and the scores are displayed after each round. At the end, it announces the overall winner based on the scores.
+// Note: The code does not handle invalid inputs from the player, which could be added for better user experience.
