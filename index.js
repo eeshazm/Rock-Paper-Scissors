@@ -55,3 +55,25 @@ function getComputerChoice() {
     
 }
 let computerSelection = getComputerChoice();
+
+function getPlayerChoice() {
+    let playerSelection = prompt("Rock Paper Scissors?");
+
+    if (playerSelection.toLowerCase() === "rock"){
+        playerSelection = "Rock";
+    }
+    else if (playerSelection.toLowerCase() === "paper"){
+        playerSelection = "Paper";
+    }
+    else if (playerSelection.toLowerCase() === "scissors"){
+        playerSelection = "Scissors";
+    }
+    else{
+        console.log("Incorrect input!");
+    }
+
+    return playerSelection;
+}
+
+let playerSelection = getPlayerChoice();
+console.log(playerSelection);
