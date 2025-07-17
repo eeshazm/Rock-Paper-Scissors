@@ -40,3 +40,18 @@ playRound(playerSelection, computerSelection) {
     }
     display final scores
 */
+
+function getComputerChoice() {
+    let computerSelection = Math.floor((Math.random() * 100)) % 3;
+    if (computerSelection === 0){
+        return "Rock";
+    }
+    else if (computerSelection === 1){
+        return "Paper";
+    }
+    else{
+        return "Scissors";
+    }
+    
+}
+let computerSelection = getComputerChoice();
