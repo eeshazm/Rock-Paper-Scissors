@@ -55,27 +55,10 @@ function getComputerChoice() {
     
 }
 
-function getPlayerChoice() {
-    let playerSelection = prompt("Rock Paper Scissors?");
-
-    if (playerSelection.toLowerCase() === "rock"){
-        playerSelection = "Rock";
-    }
-    else if (playerSelection.toLowerCase() === "paper"){
-        playerSelection = "Paper";
-    }
-    else if (playerSelection.toLowerCase() === "scissors"){
-        playerSelection = "Scissors";
-    }
-    else{
-        console.log("Incorrect input!");
-    }
-
-    return playerSelection;
-}
-
 let humanScore = 0;
 let computerScore = 0;
+let roundPlayed = 0;
+let roundLimit = 5;
 
 function playRound(computerSelection, playerSelection) {
     let result;
@@ -106,19 +89,31 @@ function playRound(computerSelection, playerSelection) {
     return result;
 }
 
-for (let i = 0; i < 5; i++) {
-    computerSelection = getComputerChoice();
-    playerSelection = getPlayerChoice();
-    playRound(computerSelection, playerSelection);
-}
+const div = document.querySelector("div");
 
-if (humanScore > computerScore) {
-    console.log("You win the game!");
-} else if (humanScore < computerScore) {
-    console.log("You lose the game!");
-} else {
-    console.log("The game is a tie!");
-}   
+div.addEventListener("click", (event) => {
+    if (roundPlayed >= roundLimit) {
+        console.log("Game over! Please refresh to play again.");
+        return;
+    }
+    
+    let playerSelection;
+    if (event.target.id === "Rock") {
+        playerSelection = "Rock";
+    } else if (event.target.id === "Paper") {
+        playerSelection = "Paper";
+    } else if (event.target.id === "Scissors") {
+        playerSelection = "Scissors";
+    } else {
+        console.log("Invalid selection!");
+        return;
+    }
+    
+    let computerSelection = getComputerChoice();
+    playRound(computerSelection, playerSelection);
+    roundPlayed += 1;
+})
+
 
 // This code implements a simple Rock-Paper-Scissors game where the player plays against the computer assuming the player inputs valid choices. The game runs for 5 rounds, and the scores are displayed after each round. At the end, it announces the overall winner based on the scores.
 // Note: The code does not handle invalid inputs from the player, which could be added for better user experience.
