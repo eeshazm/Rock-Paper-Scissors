@@ -60,8 +60,13 @@ let computerScore = 0;
 let roundPlayed = 0;
 let roundLimit = 5;
 
+let list = document.querySelector("ul");
+const finalMessage = document.getElementById("finalMessage");
+
 function playRound(computerSelection, playerSelection) {
     let result;
+    let listItem = document.createElement("li");
+    listItem.textContent = `Round ${roundPlayed + 1}: ${playerSelection} vs ${computerSelection}`;
     console.log(`Your selection: ${playerSelection}, Computer selection: ${computerSelection}`);
     if (playerSelection === "Rock" && computerSelection === "Scissors") {
         humanScore += 1;
@@ -84,7 +89,9 @@ function playRound(computerSelection, playerSelection) {
     } else {
         result = "It's a tie!";
     } 
-    console.log(result);
+    listItem.textContent += ` - ${result}`;
+    list.appendChild(listItem);
+    finalMessage.textContent = `Current score: You ${humanScore} - Computer ${computerScore}`;
     console.log(`Your score: ${humanScore}, Computer score: ${computerScore}`);
     return result;
 }
@@ -93,6 +100,13 @@ const div = document.querySelector("div");
 
 div.addEventListener("click", (event) => {
     if (roundPlayed >= roundLimit) {
+        if (humanScore > computerScore) {
+            finalMessage.textContent = `You win the game! Final score: You ${humanScore} - Computer ${computerScore}`;
+        } else if (computerScore > humanScore) {
+            finalMessage.textContent = `You lose the game! Final score: You ${humanScore} - Computer ${computerScore}`;
+        } else {
+            finalMessage.textContent = `It's a tie! Final score: You ${humanScore} - Computer ${computerScore}`;
+        }
         console.log("Game over! Please refresh to play again.");
         return;
     }
