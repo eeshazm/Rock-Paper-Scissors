@@ -5,19 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        
+        h1{
+            text-align: center;
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        #buttons{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+        li {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        #finalMessage {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            white-space: pre-line;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0;
+            color: #333;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <button id = "Rock">Rock</button>
-        <button id = "Paper">Paper</button>
-        <button id = "Scissors">Scissors</button>
+    <div id="container">
+        <h1>Rock Paper Scissors</h1>
+        <div id = "buttons">
+            <button id = "Rock">Rock</button>
+            <button id = "Paper">Paper</button>
+            <button id = "Scissors">Scissors</button>
+        </div>
+
+        <ul></ul>
+
+        <div id = "finalMessage"></div>
+
     </div>
-
-    <ul></ul>
-
-    <div id = "finalMessage"></div>
 
     <script src="index.js"></script>
 

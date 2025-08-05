@@ -67,7 +67,7 @@ function playRound(computerSelection, playerSelection) {
     let result;
     let listItem = document.createElement("li");
     listItem.textContent = `Round ${roundPlayed + 1}: ${playerSelection} vs ${computerSelection}`;
-    console.log(`Your selection: ${playerSelection}, Computer selection: ${computerSelection}`);
+    // console.log(`Your selection: ${playerSelection}, Computer selection: ${computerSelection}`);
     if (playerSelection === "Rock" && computerSelection === "Scissors") {
         humanScore += 1;
         result = "You win! Rock beats Scissors"; 
@@ -92,7 +92,8 @@ function playRound(computerSelection, playerSelection) {
     listItem.textContent += ` - ${result}`;
     list.appendChild(listItem);
     finalMessage.textContent = `Current score: You ${humanScore} - Computer ${computerScore}`;
-    console.log(`Your score: ${humanScore}, Computer score: ${computerScore}`);
+    // console.log(result);
+    // console.log(`Your score: ${humanScore}, Computer score: ${computerScore}`);
     return result;
 }
 
@@ -101,13 +102,15 @@ const div = document.querySelector("div");
 div.addEventListener("click", (event) => {
     if (roundPlayed >= roundLimit) {
         if (humanScore > computerScore) {
-            finalMessage.textContent = `You win the game! Final score: You ${humanScore} - Computer ${computerScore}`;
+            finalMessage.textContent = `You win the game!\n` ;
         } else if (computerScore > humanScore) {
-            finalMessage.textContent = `You lose the game! Final score: You ${humanScore} - Computer ${computerScore}`;
+            finalMessage.textContent = `You lose the game!\n`;
         } else {
-            finalMessage.textContent = `It's a tie! Final score: You ${humanScore} - Computer ${computerScore}`;
+            finalMessage.textContent = `It's a tie!\n`;
         }
-        console.log("Game over! Please refresh to play again.");
+        finalMessage.textContent += `Final score: You ${humanScore} - Computer ${computerScore}\n`;
+        finalMessage.textContent += " Game over! Please refresh to play again.";
+        // console.log("Game over! Please refresh to play again.");
         return;
     }
     
@@ -119,7 +122,7 @@ div.addEventListener("click", (event) => {
     } else if (event.target.id === "Scissors") {
         playerSelection = "Scissors";
     } else {
-        console.log("Invalid selection!");
+        // console.log("Invalid selection!");
         return;
     }
     
